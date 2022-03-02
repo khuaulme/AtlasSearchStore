@@ -1,12 +1,20 @@
 import React from "react";
+import HEROIMAGE from "../images/hero.jpg";
 // import Image from "next/image";
 // import Link from "next/link";
 import { ArrowNarrowRightIcon } from "@heroicons/react/outline";
 
 const Hero = () => {
   return (
-    <div className="h-96 rounded-md overflow-hidden bg-cover bg-center relative">
-      HERO IMAGE
+    <div
+      className="
+    h-96 w-full bg-cover bg-center rounded-md overflow-hidden relative bg-slate-500"
+    >
+      <img
+        src={HEROIMAGE}
+        className="w-full h-full object-cover object-center mix-blend-overlay absolute"
+        alt="retailtherapy"
+      />
       <div className="bg-gray-900 bg-opacity-60 flex items-center h-full absolute w-full z-10">
         <div className="px-10 max-w-xl">
           <h2 className="text-2xl text-white font-semibold">Tech Shirts</h2>
