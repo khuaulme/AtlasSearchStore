@@ -8,7 +8,10 @@ const CategoryRadio = () => {
   let [plan, setPlan] = useState("");
   return (
     <RadioGroup value={plan} onChange={setPlan}>
-      <div className="mt-8 py-2 text-center bg-purple-900 text-white w-72 text-lg rounded-lg">
+      <div
+        className="mt-8 py-2 text-center bg-purple-900 text-white w-72 text-lg rounded-lg"
+        onClick={() => setPlan("")}
+      >
         Categories
       </div>
       {categories.map((category) => (
@@ -34,17 +37,17 @@ const CategoryRadio = () => {
 
 const categories = [
   {
-    id: 0,
+    id: 1,
     text: "Tops",
     icon: <FaTshirt />,
   },
   {
-    id: 1,
+    id: 2,
     text: "Pants",
     icon: <GiUnderwearShorts />,
   },
   {
-    id: 2,
+    id: 3,
     text: "Accessories",
     icon: <MdMasks />,
   },
