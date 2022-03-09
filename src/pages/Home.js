@@ -10,6 +10,7 @@ import CategoryRadio from "../components/CategoryRadio";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
+  const [featuredProducts, setFeaturedProducts] = useState([]);
   const [categories, setCategories] = useState([]);
 
   const getProducts = async () => {
@@ -18,8 +19,18 @@ const Home = () => {
         `https://us-east-1.aws.data.mongodb-api.com/app/searchstore-zhtzd/endpoint/products`
       )
     ).json();
-    setProducts(productsReturned.products);
-    console.log(productsReturned.products.length);
+
+    const filteredProducts = productsReturned.products.filter(
+      (product) => product.category !== "Apparel"
+    );
+    setFeaturedProducts(() => filteredProducts);
+
+    const remainingProducts = productsReturned.products.filter(
+      (product) => product.category === "Apparel"
+    );
+    setProducts(remainingProducts);
+    console.log(featuredProducts.length);
+    console.log(remainingProducts.length);
   };
 
   useEffect(() => {
@@ -39,6 +50,7 @@ const Home = () => {
             categories={categories}
             productCount={`${products.length} Products`}
           /> */}
+          <Products products={featuredProducts} />
           <Products products={products} />
           <Pagination />
         </Container>

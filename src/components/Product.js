@@ -1,6 +1,7 @@
 import React from "react";
 
 import { ShoppingCartIcon, CodeIcon } from "@heroicons/react/outline";
+import SHIRT from "../images/angular.jpg";
 
 const Product = ({ product }) => {
   if (product.imagePath.includes("/img/")) {
@@ -38,8 +39,7 @@ const Product = ({ product }) => {
             src={product.imagePath}
             alt={product.name}
             layout="fill"
-            objectFit="cover"
-            className="absolute z-0"
+            className="absolute z-0 object-fill"
           />
           <button className="absolute z-10 p-2 rounded-full bg-green-600 text-white mx-5 -mb-4 hover:bg-green-500 focus:outline-none focus:bg-green-500">
             <ShoppingCartIcon className="w-5 h-5" />
