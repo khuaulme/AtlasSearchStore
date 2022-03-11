@@ -1,41 +1,46 @@
 import React from "react";
 
-const Pagination = () => {
+const Pagination = ({ maxPages, setCurrentPage, currentPage }) => {
+  const pageNumbers = [];
+
+  console.log("IN PAGINATION");
+  let n = 10;
+
+  //Object.values(maxPages);
+  // let numPages = n[0];
+
+  for (let i = 1; i <= n; i++) {
+    pageNumbers.push(i);
+  }
+
   return (
-    <div className="flex justify-center">
-      <div className="flex rounded-md mt-8">
-        <a
-          href="#"
-          className="py-2 px-4 leading-tight bg-white border border-gray-200 text-green-700 border-r-0 ml-0 rounded-l hover:bg-green-500 hover:text-white"
-        >
-          <span>Previous</span>
-        </a>
-        <a
-          href="#"
-          className="py-2 px-4 leading-tight bg-white border border-gray-200 text-green-700 border-r-0 hover:bg-green-500 hover:text-white"
-        >
-          <span>1</span>
-        </a>
-        <a
-          href="#"
-          className="py-2 px-4 leading-tight bg-white border border-gray-200 text-green-700 border-r-0 hover:bg-green-500 hover:text-white"
-        >
-          <span>2</span>
-        </a>
-        <a
-          href="#"
-          className="py-2 px-4 leading-tight bg-white border border-gray-200 text-green-700 border-r-0 hover:bg-green-500 hover:text-white"
-        >
-          <span>3</span>
-        </a>
-        <a
-          href="#"
-          className="py-2 px-4 leading-tight bg-white border border-gray-200 text-green-700 rounded-r hover:bg-green-500 hover:text-white"
-        >
-          <span>Next</span>
-        </a>
-      </div>
-    </div>
+    <nav className="mt-10">
+      <ul className="flex justify-center text-2xl">
+        {pageNumbers.map((number) =>
+          currentPage === number ? (
+            <button
+              key={number}
+              className="py-2 px-4 leading-tight bg-green-700 border border-gray-200 text-white border-r-0 hover:bg-green-500 hover:text-white"
+              onClick={() => {
+                setCurrentPage(number);
+              }}
+            >
+              {number}
+            </button>
+          ) : (
+            <button
+              key={number}
+              onClick={() => {
+                setCurrentPage(number);
+              }}
+              className="py-2 px-4 leading-tight bg-white border border-gray-200 text-green-700 border-r-0 hover:bg-green-500 hover:text-white"
+            >
+              {number}
+            </button>
+          )
+        )}
+      </ul>
+    </nav>
   );
 };
 

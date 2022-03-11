@@ -6,12 +6,32 @@ import Header from "../components/Header";
 import Hero from "../components/Hero";
 import Pagination from "../components/Pagination";
 import Products from "../components/Products";
-import CategoryRadio from "../components/CategoryRadio";
+import Radio from "../components/Radio";
+
+// https://us-east-1.aws.data.mongodb-api.com/app/searchstore-zhtzd/endpoint/categories
 
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [featuredProducts, setFeaturedProducts] = useState([]);
-  const [categories, setCategories] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [categories, setCategories] = useState([
+    "APPAREL",
+    "HATS",
+    "SHIRTS",
+    "BOTTOMS",
+  ]);
+  const [category, setCategory] = useState("");
+
+  const getCategories = async () => {
+    console.log("GETTING CATEGORIES");
+    const categoriesReturned = await (
+      await fetch(
+        `https://us-east-1.aws.data.mongodb-api.com/app/searchstore-zhtzd/endpoint/categories`
+      )
+    ).json();
+    console.log("CATEGORIES: ", categoriesReturned); // SEE DO I GET AN ARRAY OF STRINGS BEFORE SETTING
+    setCategories(categoriesReturned);
+  };
 
   const getProducts = async () => {
     let productsReturned = await (
@@ -20,12 +40,12 @@ const Home = () => {
       )
     ).json();
 
-    const filteredProducts = productsReturned.products.filter(
+    const filteredProducts = productsReturned.displayedProducts.filter(
       (product) => product.category !== "Apparel"
     );
     setFeaturedProducts(() => filteredProducts);
 
-    const remainingProducts = productsReturned.products.filter(
+    const remainingProducts = productsReturned.displayedProducts.filter(
       (product) => product.category === "Apparel"
     );
     setProducts(remainingProducts);
@@ -35,6 +55,7 @@ const Home = () => {
 
   useEffect(() => {
     getProducts();
+    getCategories();
     console.log("GETTING PRODUCTS");
   }, []); // add all external values your effect function depends on - none in this case
 
@@ -44,15 +65,33 @@ const Home = () => {
         <Header />
         <Container>
           <Hero />
-          <CategoryRadio />
-          {/* <Category
-            category="Tech Wear"
-            categories={categories}
-            productCount={`${products.length} Products`}
-          /> */}
+          <div className="flex space-x-8">
+            <Radio
+              categories={categories}
+              category={category}
+              title="Category"
+            />
+            <Radio
+              categories={categories}
+              category={category}
+              setCategory={setCategory}
+              title="Price"
+            />
+            <Radio
+              categories={categories}
+              category={category}
+              setCategory={setCategory}
+              title="Average Review"
+            />
+          </div>
+
           <Products products={featuredProducts} />
           <Products products={products} />
-          <Pagination />
+          <Pagination
+            maxPages={10}
+            setCurrentPage={setCurrentPage}
+            currentPage={currentPage}
+          />
         </Container>
         <Footer />
       </div>

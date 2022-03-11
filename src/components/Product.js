@@ -1,7 +1,7 @@
 import React from "react";
 
 import { ShoppingCartIcon, CodeIcon } from "@heroicons/react/outline";
-import SHIRT from "../images/angular.jpg";
+// https://us-east-1.aws.data.mongodb-api.com/app/searchstore-zhtzd/endpoint/categories
 
 const Product = ({ product }) => {
   if (product.imagePath.includes("/img/")) {
