@@ -4,12 +4,12 @@ const Pagination = ({ maxPages, setCurrentPage, currentPage }) => {
   const pageNumbers = [];
 
   console.log("IN PAGINATION");
-  let n = 10;
+  console.log(maxPages);
 
-  //Object.values(maxPages);
+  // let n = maxPages;
   // let numPages = n[0];
 
-  for (let i = 1; i <= n; i++) {
+  for (let i = 1; i <= maxPages; i++) {
     pageNumbers.push(i);
   }
 

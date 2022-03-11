@@ -30,17 +30,24 @@ const Product = ({ product }) => {
       product.imagePath = pixabayImages.shirt;
   }
 
-  let price = `5.00`;
+  //let price = `5.00`;
+  let price = Object.values(product.price)[0];
+  let score = Object.values(product.score)[0];
+  score = score.toString().slice(0, 5);
+  console.log(product.score);
   return (
     <div href={`/products/${product._id}`}>
-      <div className="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden cursor-pointer hover:shadow-2xl transition">
-        <div className="flex items-end justify-end h-56 w-full bg-cover relative">
+      <div className="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden cursor-pointer hover:shadow-2xl transition relative">
+        <div className="flex items-end justify-end h-56 w-full bg-cover ">
           <img
             src={product.imagePath}
             alt={product.name}
             layout="fill"
             className="absolute z-0 object-fill"
           />
+          <div className="absolute z-20 p-2 rounded-full bg-red-600 text-white  bottom-0 hover:bg-red-500 focus:outline-none focus:bg-red-500">
+            Score: {score}
+          </div>
           <button className="absolute z-10 p-2 rounded-full bg-green-600 text-white mx-5 -mb-4 hover:bg-green-500 focus:outline-none focus:bg-green-500">
             <ShoppingCartIcon className="w-5 h-5" />
           </button>

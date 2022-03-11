@@ -21,6 +21,7 @@ const Home = () => {
     "BOTTOMS",
   ]);
   const [category, setCategory] = useState("");
+  const [maxPages, setMaxPages] = useState(10);
 
   const getCategories = async () => {
     console.log("GETTING CATEGORIES");
@@ -36,28 +37,32 @@ const Home = () => {
   const getProducts = async () => {
     let productsReturned = await (
       await fetch(
-        `https://us-east-1.aws.data.mongodb-api.com/app/searchstore-zhtzd/endpoint/products`
+        `https://us-east-1.aws.data.mongodb-api.com/app/searchstore-zhtzd/endpoint/products?page=${currentPage}`
       )
     ).json();
 
-    const filteredProducts = productsReturned.displayedProducts.filter(
-      (product) => product.category !== "Apparel"
-    );
-    setFeaturedProducts(() => filteredProducts);
+    // const filteredProducts = productsReturned.products.filter(
+    //   (product) => product.category !== "Apparel"
+    // );
+    // setFeaturedProducts(() => filteredProducts);
 
-    const remainingProducts = productsReturned.displayedProducts.filter(
-      (product) => product.category === "Apparel"
-    );
-    setProducts(remainingProducts);
-    console.log(featuredProducts.length);
-    console.log(remainingProducts.length);
+    // const remainingProducts = productsReturned.displayedProducts.filter(
+    //   (product) => product.category === "Apparel"
+    // );
+
+    console.log("MAXPAGES: ", Object.values(productsReturned.maxPages)[0]);
+    setMaxPages(Object.values(productsReturned.maxPages)[0]);
+    setProducts(productsReturned.products);
+    // console.log(featuredProducts.length);
+    // console.log(remainingProducts.length);
   };
 
   useEffect(() => {
     getProducts();
     getCategories();
     console.log("GETTING PRODUCTS");
-  }, []); // add all external values your effect function depends on - none in this case
+    // eslint-disable-next-line
+  }, [currentPage]); // add all external values your effect function depends on - none in this case  -- currentPage
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
@@ -85,10 +90,10 @@ const Home = () => {
             />
           </div>
 
-          <Products products={featuredProducts} />
+          {/* <Products products={featuredProducts} /> */}
           <Products products={products} />
           <Pagination
-            maxPages={10}
+            maxPages={maxPages}
             setCurrentPage={setCurrentPage}
             currentPage={currentPage}
           />
