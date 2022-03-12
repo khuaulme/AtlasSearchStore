@@ -45,13 +45,15 @@ const Product = ({ product }) => {
             layout="fill"
             className="absolute z-0 object-fill"
           />
-          <div className="absolute z-20 p-2 rounded bg-black text-white  top-0  focus:outline-none ">
-            Score: {score}
-          </div>
+
           <button className="absolute z-10 p-2 rounded-full bg-green-600 text-white mx-5 -mb-4 hover:bg-green-500 focus:outline-none focus:bg-green-500">
             <ShoppingCartIcon className="w-5 h-5" />
           </button>
+          <div className=" p-2 absolute top-0 shadow-xl rounded bg-black text-white my-auto mb-0  focus:outline-none ">
+            {score}
+          </div>
         </div>
+
         <div className="px-5 py-3">
           <h3 className="text-gray-700 uppercase">{product.name}</h3>
           <span className="text-gray-500 mt-2">${price}</span>
