@@ -45,7 +45,7 @@ const Product = ({ product }) => {
             layout="fill"
             className="absolute z-0 object-fill"
           />
-          <div className="absolute z-20 p-2 rounded-full bg-red-600 text-white  bottom-0 hover:bg-red-500 focus:outline-none focus:bg-red-500">
+          <div className="absolute z-20 p-2 rounded bg-black text-white  top-0  focus:outline-none ">
             Score: {score}
           </div>
           <button className="absolute z-10 p-2 rounded-full bg-green-600 text-white mx-5 -mb-4 hover:bg-green-500 focus:outline-none focus:bg-green-500">
