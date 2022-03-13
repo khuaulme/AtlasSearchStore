@@ -30,7 +30,7 @@ const Home = () => {
         `https://us-east-1.aws.data.mongodb-api.com/app/searchstore-zhtzd/endpoint/categories`
       )
     ).json();
-    console.log("CATEGORIES: ", categoriesReturned); // SEE DO I GET AN ARRAY OF STRINGS BEFORE SETTING
+    // console.log("CATEGORIES: ", categoriesReturned); // SEE DO I GET AN ARRAY OF STRINGS BEFORE SETTING
     setCategories(categoriesReturned);
   };
 
@@ -40,21 +40,11 @@ const Home = () => {
         `https://us-east-1.aws.data.mongodb-api.com/app/searchstore-zhtzd/endpoint/products?page=${currentPage}`
       )
     ).json();
-
-    // const filteredProducts = productsReturned.products.filter(
-    //   (product) => product.category !== "Apparel"
-    // );
-    // setFeaturedProducts(() => filteredProducts);
-
-    // const remainingProducts = productsReturned.displayedProducts.filter(
-    //   (product) => product.category === "Apparel"
-    // );
+    console.log(productsReturned);
 
     console.log("MAXPAGES: ", Object.values(productsReturned.maxPages)[0]);
     setMaxPages(Object.values(productsReturned.maxPages)[0]);
     setProducts(productsReturned.products);
-    // console.log(featuredProducts.length);
-    // console.log(remainingProducts.length);
   };
 
   useEffect(() => {
@@ -90,7 +80,6 @@ const Home = () => {
             />
           </div>
 
-          {/* <Products products={featuredProducts} /> */}
           <Products products={products} />
           <Pagination
             maxPages={maxPages}
