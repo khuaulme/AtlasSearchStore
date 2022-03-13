@@ -22,6 +22,7 @@ const Home = () => {
   ]);
   const [category, setCategory] = useState("");
   const [maxPages, setMaxPages] = useState(10);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const getCategories = async () => {
     console.log("GETTING CATEGORIES");
@@ -37,10 +38,13 @@ const Home = () => {
   const getProducts = async () => {
     let productsReturned = await (
       await fetch(
-        `https://us-east-1.aws.data.mongodb-api.com/app/searchstore-zhtzd/endpoint/products?page=${currentPage}`
+        `https://us-east-1.aws.data.mongodb-api.com/app/searchstore-zhtzd/endpoint/products?searchTerm=${searchTerm}&page=${currentPage}`
       )
     ).json();
     console.log(productsReturned);
+    console.log(
+      `https://us-east-1.aws.data.mongodb-api.com/app/searchstore-zhtzd/endpoint/products?searchTerm=${searchTerm}&page=${currentPage}`
+    );
 
     console.log("MAXPAGES: ", Object.values(productsReturned.maxPages)[0]);
     setMaxPages(Object.values(productsReturned.maxPages)[0]);
@@ -48,16 +52,18 @@ const Home = () => {
   };
 
   useEffect(() => {
-    getProducts();
-    getCategories();
-    console.log("GETTING PRODUCTS");
+    if (searchTerm !== "" && searchTerm.length > 3) {
+      getProducts();
+      getCategories();
+      console.log("GETTING PRODUCTS");
+    }
     // eslint-disable-next-line
-  }, [currentPage]); // add all external values your effect function depends on - none in this case  -- currentPage
+  }, [searchTerm, currentPage]); // add all external values your effect function depends on - none in this case  -- currentPage
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <div className="bg-white w-full min-h-screen">
-        <Header />
+        <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         <Container>
           <Hero />
           <div className="flex space-x-8">

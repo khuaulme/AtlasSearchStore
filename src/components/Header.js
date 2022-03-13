@@ -7,10 +7,9 @@ import {
 } from "@heroicons/react/outline";
 // import Cart from "./Cart";
 
-const Header = () => {
+const Header = ({ searchTerm, setSearchTerm }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
   const [autoComplete, setAutoComplete] = useState([]);
 
   // useEffect(async () => {
@@ -35,8 +34,9 @@ const Header = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("SEARCHTERM: ", searchTerm);
 
-    setSearchTerm("");
+    // setSearchTerm("");
     // router.push({
     //   pathname: `/search/${searchTerm}`,
     // });
@@ -126,7 +126,7 @@ const Header = () => {
                 value={searchTerm}
               />
             </form>
-            {autoComplete.length > 0 && (
+            {/* {autoComplete.length > 0 && (
               <ul className="absolute inset-x-0 top-full bg-green-200 border border-green-500 rounded-md z-20">
                 {autoComplete.map((item) => {
                   return (
@@ -140,7 +140,7 @@ const Header = () => {
                   );
                 })}
               </ul>
-            )}
+            )} */}
           </div>
         </div>
       </header>
