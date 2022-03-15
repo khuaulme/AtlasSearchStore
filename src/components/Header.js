@@ -56,7 +56,7 @@ const Header = ({ searchTerm, setSearchTerm }) => {
           <div className="flex items-center justify-between">
             <div href="/">
               <div className="w-full text-green-500 text-2xl font-semibold cursor-pointer">
-                MongoStoreLINK
+                MongoStore
               </div>
             </div>
             <div className="flex items-center justify-end w-full">
@@ -87,16 +87,16 @@ const Header = ({ searchTerm, setSearchTerm }) => {
           >
             <div className="flex flex-col sm:flex-row">
               <div className="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0">
-                <div href="/">HomeLINK</div>
+                <div href="/">Home</div>
               </div>
               <div className="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0">
-                <div href="/products">ShopLINK</div>
+                <div href="/products">Shop</div>
               </div>
               <div
                 className="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0"
                 href="#"
               >
-                <div href="/products/category">CategoriesLINK</div>
+                <div href="/products/category">Categories</div>
               </div>
               <a
                 className="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0"

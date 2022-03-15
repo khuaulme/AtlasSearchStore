@@ -24,7 +24,7 @@ const Hero = () => {
           </p>
           <div href={`/products`}>
             <button className="flex items-center mt-4 px-3 py-2 bg-green-600 text-white text-sm uppercase font-medium rounded hover:bg-green-500 focus:outline-none focus:bg-green-500">
-              <span>Shop NowLINK</span>
+              <span>Shop Now</span>
               <ArrowNarrowRightIcon className="w-5 h-5" />
             </button>
           </div>

@@ -30,8 +30,10 @@ const Product = ({ product }) => {
         </div>
 
         <div className="px-5 py-3">
-          <h3 className="text-gray-700 uppercase">{product.name}</h3>
+          <h3 className="text-gray-900 uppercase">{product.name}</h3>
+          <h3 className="text-green-800">CATEGORY: {product.category}</h3>
           <span className="text-gray-500 mt-2">${price}</span>
+          <h3 className="text-red-500 mt-2">{product.marketplace}</h3>
         </div>
       </div>
     </div>
