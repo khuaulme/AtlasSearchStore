@@ -66,7 +66,7 @@ const Home = () => {
                 title="Marketplace"
               />
               <button
-                onClick={() => setShowSponsored(!showSponsored)}
+                onClick={() => setShowSponsored(true)}
                 className="relative mt-8 py-2 text-center bg-red-700 text-white text-2xl w-72 rounded-lg"
                 type="button"
               >
