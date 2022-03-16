@@ -34,7 +34,7 @@ const Product = ({ product }) => {
           <button className="absolute z-10 p-2 rounded-full bg-green-600 text-white mx-5 -mb-4 hover:bg-green-500 focus:outline-none focus:bg-green-500">
             <ShoppingCartIcon className="w-5 h-5" />
           </button>
-          <div className=" p-2 absolute z-10 top-0 shadow-xl rounded-full bg-yellow-300 text-black my-auto mb-0  transform transition duration-500 hover:scale-125 focus:outline-none ">
+          <div className=" p-2 absolute text-lg bg-rose-700 z-10 top-0 shadow-xl rounded-full text-white my-auto mb-0  transform transition duration-500 hover:scale-125 focus:outline-none ">
             {score}
           </div>
         </div>
