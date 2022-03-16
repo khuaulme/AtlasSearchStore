@@ -23,18 +23,17 @@ const CheckBox = ({ categories, setCategories }) => {
         Categories
       </h1>
       <ul className="my-4" onChange={handleOnChange}>
-        {members.map(({ name, id, isChecked, value }) => {
+        {members.map(({ name }, index) => {
           return (
-            <li key={id}>
+            <li key={index}>
               <div className="left-section my-2">
                 <input
                   type="checkbox"
-                  id={`custom-checkbox-${id}`}
+                  id={`custom-checkbox-${index}`}
                   name={name}
-                  value={value}
                   defaultChecked={categories.includes(name)}
                 />
-                <label className="ml-6" htmlFor={`custom-checkbox-${id}`}>
+                <label className="ml-6" htmlFor={`custom-checkbox-${index}`}>
                   {name}
                 </label>
               </div>
@@ -48,40 +47,34 @@ const CheckBox = ({ categories, setCategories }) => {
 
 const members = [
   {
-    id: 0,
-    name: "Clothing",
-    value: "Clothing",
-    isChecked: false,
+    name: "Bed & Bath",
   },
   {
-    id: 1,
+    name: "Clothing & Shoes",
+  },
+  {
+    name: "Computers & Accessories",
+  },
+  {
     name: "Furniture",
-    value: "Furniture",
-    isChecked: false,
   },
   {
-    id: 2,
+    name: "Home & Kitchen",
+  },
+  {
     name: "Lighting & Ceiling Fans",
-    value: "Lighting & Ceiling Fans",
-    isChecked: false,
   },
   {
-    id: 3,
-    name: "Bedding",
-    value: "Bedding",
-    isChecked: false,
+    name: "Men",
   },
   {
-    id: 4,
+    name: "Mobile Phones & Communication",
+  },
+  {
     name: "Women",
-    value: "Women",
-    isChecked: false,
   },
   {
-    id: 5,
     name: "Television & Video",
-    value: "Television & Video",
-    isChecked: false,
   },
 ];
 
