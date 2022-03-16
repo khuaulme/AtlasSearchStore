@@ -21,11 +21,10 @@ const Radio = ({ options, option, setOption, title }) => {
         {title}
       </div>
       {options.map((option, idx) => (
-        <div className="mt-2 ml-6">
+        <div className="mt-2 ml-6" key={idx}>
           <RadioGroup.Option value={option}>
             {({ checked }) => (
               <div
-                key={idx}
                 className={
                   checked ? "bg-purple-200 py-2 px-6 rounded w-72 flex" : "flex"
                 }

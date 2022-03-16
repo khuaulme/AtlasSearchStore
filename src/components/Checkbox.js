@@ -4,13 +4,17 @@ const CheckBox = ({ categories, setCategories }) => {
   const handleOnChange = (e) => {
     let { name, checked } = e.target;
     if (checked) {
-      setCategories((prevCategories) => [...prevCategories, name]);
+      const newArray = [...categories, name]; // creates a new array from a copy of categories and adds name to the end
+      //   console.log(newArray);
+      setCategories(newArray);
+      //    console.log("CATEGORIES: ", categories);
+    } else {
+      const copy = [...categories];
+      const filteredArray = copy.filter((item) => item !== name);
+      //    console.log("FILTERED: ", filteredArray);
+      setCategories(filteredArray);
+      //  console.log("CATEGORIES: ", categories);
     }
-    if (checked === false) {
-      let categoryArray = categories.filter((item) => item !== name);
-      setCategories(categoryArray);
-    }
-    console.log("CATEGORY ARRAY: ", categories);
   };
 
   return (
@@ -19,17 +23,18 @@ const CheckBox = ({ categories, setCategories }) => {
         Categories
       </h1>
       <ul className="my-4" onChange={handleOnChange}>
-        {members.map(({ name }, index) => {
+        {members.map(({ name, id, isChecked, value }) => {
           return (
-            <li key={index}>
+            <li key={id}>
               <div className="left-section my-2">
                 <input
                   type="checkbox"
-                  id={`custom-checkbox-${index}`}
+                  id={`custom-checkbox-${id}`}
                   name={name}
-                  defaultChecked={categories.includes({ name })}
+                  value={value}
+                  defaultChecked={categories.includes(name)}
                 />
-                <label className="ml-6" htmlFor={`custom-checkbox-${index}`}>
+                <label className="ml-6" htmlFor={`custom-checkbox-${id}`}>
                   {name}
                 </label>
               </div>
@@ -42,11 +47,42 @@ const CheckBox = ({ categories, setCategories }) => {
 };
 
 const members = [
-  { name: "Clothing" },
-  { name: "Furniture" },
-  { name: "Lighting & Ceiling Fans" },
-  { name: "Bedding" },
-  { name: "Women" },
-  { name: "Television & Video" },
+  {
+    id: 0,
+    name: "Clothing",
+    value: "Clothing",
+    isChecked: false,
+  },
+  {
+    id: 1,
+    name: "Furniture",
+    value: "Furniture",
+    isChecked: false,
+  },
+  {
+    id: 2,
+    name: "Lighting & Ceiling Fans",
+    value: "Lighting & Ceiling Fans",
+    isChecked: false,
+  },
+  {
+    id: 3,
+    name: "Bedding",
+    value: "Bedding",
+    isChecked: false,
+  },
+  {
+    id: 4,
+    name: "Women",
+    value: "Women",
+    isChecked: false,
+  },
+  {
+    id: 5,
+    name: "Television & Video",
+    value: "Television & Video",
+    isChecked: false,
+  },
 ];
+
 export default CheckBox;

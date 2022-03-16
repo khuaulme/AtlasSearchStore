@@ -47,7 +47,7 @@ const Home = () => {
     }
 
     // eslint-disable-next-line
-  }, [searchTerm, market, categories, showSponsored]); // add all external values your effect function depends on - none in this case  -- currentPage
+  }, [searchTerm, categories]); // add all external values your effect function depends on - none in this case  -- currentPage
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
@@ -66,7 +66,7 @@ const Home = () => {
                 title="Marketplace"
               />
               <button
-                onClick={() => setShowSponsored(true)}
+                onClick={() => setShowSponsored(!showSponsored)}
                 className="relative mt-8 py-2 text-center bg-red-700 text-white text-2xl w-72 rounded-lg"
                 type="button"
               >
