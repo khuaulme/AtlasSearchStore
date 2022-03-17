@@ -1,10 +1,13 @@
 import React from "react";
 import HEROIMAGE from "../images/hero.jpg";
-// import Image from "next/image";
-// import Link from "next/link";
-import { ArrowNarrowRightIcon } from "@heroicons/react/outline";
+import { ImFilter } from "react-icons/im";
 
-const Hero = () => {
+const Hero = ({
+  showFilters,
+  setShowFilters,
+  showSponsored,
+  setShowSponsored,
+}) => {
   return (
     <div
       className="
@@ -23,12 +26,20 @@ const Hero = () => {
             atque recusandae ipsum odio possimus soluta!
           </p>
           <div href={`/products`}>
-            <button className="flex items-center mt-4 px-3 py-2 bg-green-600 text-white text-sm uppercase font-medium rounded hover:bg-green-500 focus:outline-none focus:bg-green-500">
-              <span>Shop Now</span>
-              <ArrowNarrowRightIcon className="w-5 h-5" />
+            <button
+              onClick={() => setShowSponsored(!showSponsored)}
+              className="flex items-center mt-4 px-3 py-2 bg-green-600 text-white text-xl uppercase font-medium rounded hover:bg-green-500 focus:outline-none focus:bg-green-500"
+            >
+              <span>✨ Shop Sale ✨</span>
             </button>
           </div>
         </div>
+      </div>
+      <div onClick={() => console.log("Click!")}>
+        <ImFilter
+          onClick={() => console.log("Click!")}
+          className="absolute bottom-4 right-10 w-10 h-10 text-slate-100"
+        />
       </div>
     </div>
   );

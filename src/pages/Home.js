@@ -19,6 +19,7 @@ const Home = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [showResults, setShowResults] = useState(false);
   const [showSponsored, setShowSponsored] = useState(false);
+  const [showFilters, setShowFilters] = useState(false);
 
   const getProductsEndpoint =
     "https://us-east-1.aws.data.mongodb-api.com/app/searchstore-zhtzd/endpoint/products";
@@ -50,30 +51,31 @@ const Home = () => {
   }, [searchTerm, showSponsored, categories, market]); // add all external values your effect function depends on - none in this case  -- currentPage
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <div className="bg-white w-full min-h-screen">
+    <div className="relative flex flex-col items-center min-h-screen py-2">
+      <div className=" bg-white w-full ">
         <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-        <Container>
-          <Hero />
-          <div className="flex space-x-8">
-            <div>
-              {/* <form className="mt-8" onSubmit={handleSubmit}> */}
-              <CheckBox categories={categories} setCategories={setCategories} />
-              <Radio
-                options={markets}
-                option={market}
-                setOption={setMarket}
-                title="Marketplace"
-              />
-              <button
-                onClick={() => setShowSponsored(!showSponsored)}
-                className="relative mt-8 py-2 text-center bg-red-700 text-white text-2xl w-72 rounded-lg"
-                type="button"
-              >
-                <span>Sale Items ✨🎉</span>{" "}
-              </button>
-            </div>
-
+        <Container className="flex-grow">
+          <Hero
+            showFilters={showFilters}
+            setShowFilters={setShowFilters}
+            showSponsored={showSponsored}
+            setShowSponsored={setShowSponsored}
+          />
+          <div className="flex flex-grow space-x-8">
+            {showFilters && (
+              <div className="mb-10">
+                <CheckBox
+                  categories={categories}
+                  setCategories={setCategories}
+                />
+                <Radio
+                  options={markets}
+                  option={market}
+                  setOption={setMarket}
+                  title="Marketplace"
+                />
+              </div>
+            )}
             {showResults ? (
               <Products products={products} />
             ) : (
@@ -88,7 +90,9 @@ const Home = () => {
             currentPage={currentPage}
           /> */}
         </Container>
-        <Footer />
+        <div className="mt-8 absolute inset-x-0 bottom-0">
+          <Footer />
+        </div>
       </div>
     </div>
   );
