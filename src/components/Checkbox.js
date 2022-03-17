@@ -3,8 +3,15 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 const CheckBox = ({ categories, setCategories }) => {
-  const [showCode, setShowCode] = useState(true);
-  const [categoriesObject, setCategoriesObject] = useState({});
+  const [showCode, setShowCode] = useState(false);
+
+  let categoriesObject = {
+    text: {
+      query: categories,
+      path: "category",
+    },
+  };
+
   let categoriesString = JSON.stringify(categoriesObject, null, 2);
   const handleOnChange = (e) => {
     let { name, checked } = e.target;
@@ -22,24 +29,12 @@ const CheckBox = ({ categories, setCategories }) => {
     }
   };
 
-  useEffect(() => {
-    if (categories.length === 0) {
-      setShowCode(false);
-      return;
-    }
-    setCategoriesObject({
-      text: {
-        query: categories,
-        path: "category",
-      },
-    });
-    setShowCode(true);
-    // eslint-disable-next-line
-  }, [categories]);
-
   return (
     <div className="">
-      <h1 className="mt-8 py-2 text-center bg-blue-900 text-white w-72 text-lg rounded-lg">
+      <h1
+        onClick={() => setShowCode(!showCode)}
+        className="mt-8 py-2 text-center bg-blue-900 text-white w-72 text-lg rounded-lg"
+      >
         Categories
       </h1>
       <ul className="my-4" onChange={handleOnChange}>
@@ -63,9 +58,9 @@ const CheckBox = ({ categories, setCategories }) => {
       </ul>
       {showCode && (
         <div
-          onClick={() => {
-            setShowCode(false);
-          }}
+        // onClick={() => {
+        //   setShowCode(false);
+        // }}
         >
           <SyntaxHighlighter language="javascript" style={atomDark}>
             {categoriesString}
@@ -110,3 +105,19 @@ const members = [
 ];
 
 export default CheckBox;
+
+// useEffect(() => {
+//   if (categories.length === 0) {
+//     setShowCode(false);
+//     return;
+//   }
+//   setCategoriesObject({
+//     text: {
+//       query: categories,
+//       path: "category",
+//     },
+//   });
+//   setShowCode(true);
+//   // eslint-disable-next-line
+// }, [categories]);
+// const [categoriesObject, setCategoriesObject] = useState({});

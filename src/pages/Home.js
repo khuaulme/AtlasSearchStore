@@ -19,7 +19,28 @@ const Home = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [showResults, setShowResults] = useState(false);
   const [showSponsored, setShowSponsored] = useState(false);
-  const [showFilters, setShowFilters] = useState(false);
+  const [showFilters, setShowFilters] = useState(true);
+
+  // const getProductsEndpointDev =
+  //   "https://us-east-1.aws.data.mongodb-api.com/app/searchstore-zhtzd/endpoint/dev";
+
+  // const getProductsDev = async () => {
+  //   let productsReturned = await (
+  //     await fetch(`${getProductsEndpointDev}?searchTerm=${searchTerm}`)
+  //   ).json();
+  //   console.log(productsReturned);
+  //   setProducts(productsReturned);
+  //   if (productsReturned.length !== 0) setShowResults(true);
+  // };
+
+  // useEffect(() => {
+  //   if (searchTerm !== "" && searchTerm.length > 2) {
+  //     getProductsDev();
+  //     console.log("GETTING PRODUCTS");
+  //   }
+
+  //   // eslint-disable-next-line
+  // }, [searchTerm]);
 
   const getProductsEndpoint =
     "https://us-east-1.aws.data.mongodb-api.com/app/searchstore-zhtzd/endpoint/products";
@@ -43,7 +64,6 @@ const Home = () => {
   useEffect(() => {
     if (searchTerm !== "" && searchTerm.length > 2) {
       getProducts();
-      //   getCategories();
       console.log("GETTING PRODUCTS");
     }
 

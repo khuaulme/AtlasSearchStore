@@ -20,6 +20,7 @@ const Header = ({ searchTerm, setSearchTerm }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("SEARCHTERM: ", searchTerm);
+    setShowSuggestions(false);
   };
 
   const fetchAC_Names = async (searchTerm) => {

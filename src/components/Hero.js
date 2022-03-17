@@ -33,12 +33,12 @@ const Hero = ({
               <span>✨ Shop Sale ✨</span>
             </button>
 
-            <button
+            {/* <button
               onClick={() => setShowFilters(!showFilters)}
               className="absolute bottom-4 right-4 flex items-center mt-4 px-3 py-2 bg-slate-700 text-slate-200 text-xl uppercase font-medium rounded hover:bg-slate-600 focus:outline-none focus:bg-slate-600"
             >
               <span>Filters</span>
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

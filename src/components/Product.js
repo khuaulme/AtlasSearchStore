@@ -6,13 +6,16 @@ import { ShoppingCartIcon, CodeIcon } from "@heroicons/react/outline";
 const Product = ({ product }) => {
   const [showDescription, setShowDescription] = useState(false);
   let description = [];
+  let score = 0;
   if (product.main_description) {
     description = product.main_description;
   }
-  let score = Object.values(product.score)[0];
-  let price = Object.values(product.price.value)[0];
+  if (product.score) {
+    score = Object.values(product.score)[0];
+    score = score.toString().slice(0, 5);
+  }
 
-  score = score.toString().slice(0, 5);
+  let price = Object.values(product.price.value)[0];
 
   const handleOnClick = () => {
     if (product.main_description) setShowDescription(!showDescription);
@@ -34,9 +37,11 @@ const Product = ({ product }) => {
           <button className="absolute z-10 p-2 rounded-full bg-green-600 text-white mx-5 -mb-4 hover:bg-green-500 focus:outline-none focus:bg-green-500">
             <ShoppingCartIcon className="w-5 h-5" />
           </button>
-          <div className=" p-2 absolute text-lg bg-rose-700 z-10 top-0 shadow-xl rounded-full text-white my-auto mb-0  transform transition duration-500 hover:scale-125 focus:outline-none ">
-            {score}
-          </div>
+          {product.score && (
+            <div className=" p-2 absolute text-lg bg-rose-700 z-10 top-0 shadow-xl rounded-full text-white my-auto mb-0  transform transition duration-500 hover:scale-125 focus:outline-none ">
+              {score}
+            </div>
+          )}
         </div>
 
         <div className="px-5 py-3">
