@@ -31,7 +31,7 @@ const ProductDescription = ({
         </div>
 
         <div className="flex justify-around py-4 pl-2 pr-4">
-          <img src={image} alt={title} className="z-0 w-1/4" />
+          <img src={image} alt={title} className="z-0 w-1/4 h-96" />
           <div className="flex flex-col ml-6 text-2xl font-body">
             {description ? (
               description.map((item, idx) => {
