@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 const CheckBox = ({ categories, setCategories }) => {
+  const [showCode, setShowCode] = useState(true);
+  const [categoriesObject, setCategoriesObject] = useState({});
+  let categoriesString = JSON.stringify(categoriesObject, null, 2);
   const handleOnChange = (e) => {
     let { name, checked } = e.target;
     if (checked) {
@@ -16,6 +21,21 @@ const CheckBox = ({ categories, setCategories }) => {
       //  console.log("CATEGORIES: ", categories);
     }
   };
+
+  useEffect(() => {
+    if (categories.length === 0) {
+      setShowCode(false);
+      return;
+    }
+    setCategoriesObject({
+      text: {
+        query: categories,
+        path: "category",
+      },
+    });
+    setShowCode(true);
+    // eslint-disable-next-line
+  }, [categories]);
 
   return (
     <div className="">
@@ -41,6 +61,17 @@ const CheckBox = ({ categories, setCategories }) => {
           );
         })}
       </ul>
+      {showCode && (
+        <div
+          onClick={() => {
+            setShowCode(false);
+          }}
+        >
+          <SyntaxHighlighter language="javascript" style={atomDark}>
+            {categoriesString}
+          </SyntaxHighlighter>
+        </div>
+      )}
     </div>
   );
 };

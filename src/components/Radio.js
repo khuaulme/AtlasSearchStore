@@ -1,7 +1,28 @@
 import { RadioGroup } from "@headlessui/react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 const Radio = ({ options, option, setOption, title }) => {
+  const [showCode, setShowCode] = useState(false);
+  const [marketObject, setMarketObject] = useState({});
+
+  let marketString = JSON.stringify(marketObject, null, 2);
+
+  useEffect(() => {
+    if (option === "") {
+      setShowCode(false);
+      return;
+    }
+    setMarketObject({
+      text: {
+        query: option,
+        path: "marketplace",
+      },
+    });
+    setShowCode(true);
+    // eslint-disable-next-line
+  }, [option]);
   let cName = "";
   if (title === "Marketplace") {
     cName =
@@ -35,6 +56,17 @@ const Radio = ({ options, option, setOption, title }) => {
           </RadioGroup.Option>
         </div>
       ))}
+      {showCode && (
+        <div
+          onClick={() => {
+            setShowCode(false);
+          }}
+        >
+          <SyntaxHighlighter language="javascript" style={atomDark}>
+            {marketString}
+          </SyntaxHighlighter>
+        </div>
+      )}
     </RadioGroup>
   );
 };
