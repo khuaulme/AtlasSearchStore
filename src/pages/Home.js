@@ -47,7 +47,7 @@ const Home = () => {
     }
 
     // eslint-disable-next-line
-  }, [searchTerm, categories, showSponsored]); // add all external values your effect function depends on - none in this case  -- currentPage
+  }, [searchTerm, showSponsored, categories, market]); // add all external values your effect function depends on - none in this case  -- currentPage
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">

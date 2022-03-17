@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import {
   ShoppingCartIcon,
@@ -11,42 +11,60 @@ const Header = ({ searchTerm, setSearchTerm }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [autoComplete, setAutoComplete] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const initial = useRef(true);
 
-  // useEffect(async () => {
-  //   if (searchTerm.length) {
-  //     // add your Realm App Id to the .env.local file
-  //     const REALM_APP_ID = process.env.NEXT_PUBLIC_REALM_APP_ID;
-  //     const app = new Realm.App({ id: REALM_APP_ID });
-  //     const credentials = Realm.Credentials.anonymous();
-  //     try {
-  //       const user = await app.logIn(credentials);
-  //       const searchAutoComplete = await user.functions.searchAutoComplete(
-  //         searchTerm
-  //       );
-  //       setAutoComplete(() => searchAutoComplete);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   } else {
-  //     setAutoComplete([]);
-  //   }
-  // }, [searchTerm]);
+  const Suggestions_AC_Endpoint =
+    "https://us-east-1.aws.data.mongodb-api.com/app/searchstore-zhtzd/endpoint/names";
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("SEARCHTERM: ", searchTerm);
-
-    // setSearchTerm("");
-    // router.push({
-    //   pathname: `/search/${searchTerm}`,
-    // });
   };
 
-  const handleSelect = (id) => {
-    setSearchTerm("");
-    // router.push({
-    //   pathname: `/products/${id}`,
-    // });
+  const fetchAC_Names = async (searchTerm) => {
+    let autocomplete_names_endpoint = Suggestions_AC_Endpoint;
+    if (searchTerm) {
+      autocomplete_names_endpoint =
+        autocomplete_names_endpoint + `?searchName=${searchTerm}`;
+    }
+    try {
+      let productNames = await (
+        await fetch(autocomplete_names_endpoint)
+      ).json();
+      console.log(productNames);
+
+      setAutoComplete(productNames);
+      console.log("NAMES: ", autoComplete.length);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  useEffect(() => {
+    if (initial.current) {
+      initial.current = false;
+      return;
+    }
+    // BUILD OUT AUTOCOMPLETE TERMS
+    if (searchTerm === "") setShowSuggestions(false);
+    if (searchTerm !== "" && searchTerm.length > 3) {
+      fetchAC_Names(searchTerm);
+
+      if (autoComplete.length !== 0) {
+        setShowSuggestions(true);
+        return;
+      }
+      setShowSuggestions(false);
+    }
+    return;
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchTerm]);
+
+  const handleSelect = (name) => {
+    setSearchTerm(name);
+    setShowSuggestions(false);
+    setAutoComplete([]);
   };
 
   return (
@@ -126,21 +144,21 @@ const Header = ({ searchTerm, setSearchTerm }) => {
                 value={searchTerm}
               />
             </form>
-            {/* {autoComplete.length > 0 && (
-              <ul className="absolute inset-x-0 top-full bg-green-200 border border-green-500 rounded-md z-20">
+            {showSuggestions && (
+              <ul className="absolute inset-x-0 top-full border border-green-600 bg-white rounded-md z-20">
                 {autoComplete.map((item) => {
                   return (
                     <li
                       key={item._id}
-                      className="px-4 py-2 hover:bg-green-300 cursor-pointer"
-                      onClick={() => handleSelect(item._id)}
+                      className="px-4 py-2 hover:bg-yellow-100 cursor-pointer border-b "
+                      onClick={() => handleSelect(item.name)}
                     >
                       {item.name}
                     </li>
                   );
                 })}
               </ul>
-            )} */}
+            )}
           </div>
         </div>
       </header>
