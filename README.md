@@ -1,4 +1,8 @@
-# Atlas Search Hackathon Sponsored by Amazon Web Services
+## E-Commerce Sample Application
+
+## Atlas Search Hackathon
+
+### Sponsored by Amazon Web Services
 
 Hello! 👋 This e-commerce application allows you to search lightning fast through a wide variety of data types through a dataset of Amazon products.
 
@@ -35,6 +39,12 @@ Future Atlas Search features to implement can include:
 - MongoDB Realm for backend HTTPs endpoints and webhooks
 - A sample dataset of Amazon products
 
+<h3>API Points of Integration</h3>
+This application is hosted entirely on Realm and calls 2 API endpoints:
+ 
+ * getProducts in the Home.js page
+ * Suggestions_AC_Endpoint, used for autocompleted product names, in the Header.js component.
+
 <p><em>Currently this app is not suitable for mobile, but feel free to send a PR.</em> 😊</p>
 
 <h3>Prerequisites</h3>
@@ -55,12 +65,13 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Atlas Search Hackathon Template:
+
+https://github.com/jamesmilesmdb/atlas-search-hackathon-22
 
 <br/>
 <div align="center">
-<img src="SearchArchitecture.png" width="450"  />
+<img src="SearchArchitecture.png" width="700"  />
 </div>
 <br/>
 
