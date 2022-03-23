@@ -41,8 +41,8 @@ Future Atlas Search features to implement can include:
 <h3>API Points of Integration</h3>
 This application is hosted entirely on Realm and calls 2 API endpoints:
  
- * getProducts in the Home.js page
- * Suggestions_AC_Endpoint, used for autocompleted product names, in the Header.js component.
+ * getProductsEndpoint in the Home.js page on line 24
+ * Suggestions_AC_Endpoint, used for autocompleted product names, in the Header.js component on line 17.
 
 <p><em>Currently this app is not suitable for mobile, but feel free to send a PR.</em> 😊</p>
 
@@ -68,6 +68,17 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 https://github.com/jamesmilesmdb/atlas-search-hackathon-22
 
+React Components:
+<br/>
+
+<div align="center">
+<img src="HomePage.png" width="450"  />
+</div>
+<br/>
+<br/>
+<div align="center">
+<img src="ProdDescription.png" width="450"  />
+</div>
 <br/>
 <div align="center">
 <img src="SearchArchitecture.png" width="700"  />
