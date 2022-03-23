@@ -1,8 +1,8 @@
 ## E-Commerce Sample Application
 
-## Atlas Search Hackathon
+<h2> Atlas Search Hackathon</h2>
 
-### Sponsored by Amazon Web Services
+<h3>Sponsored by Amazon Web Services</h3>
 
 Hello! 👋 This e-commerce application allows you to search lightning fast through a wide variety of data types through a dataset of Amazon products.
 
