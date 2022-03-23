@@ -2,19 +2,13 @@
 
 Hello! 👋 This e-commerce application allows you to search lightning fast through a wide variety of data types through a dataset of Amazon products.
 
-## Available Scripts
+<br/>
+<div align="center">
+<img src="ECommerce.png" width="450"  />
+</div>
+<br/>
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-<p> Atlas Search Store implements many Atlas Search features from autocomplete to custom function scoring. Using the $search operator in a MongoDB aggregation pipeline, we can build fine-grained searches across text, numerics, and geospatial data. By building out What's Cooking, you'll learn all sorts of ways MongoDB allows you to build complex, fine-grained full-text searches on your Atlas data.</p>
+<p> Atlas Search Store implements many Atlas Search features from autocomplete to custom function scoring. Using the $search operator in a MongoDB aggregation pipeline, we can build fine-grained searches across text, numerics, and geospatial data. By building out this application, you'll learn all sorts of ways MongoDB allows you to build complex, fine-grained full-text searches on your Atlas data.</p>
 
 **No additional servers or software needed. No need to keep data in sync. Everything is done in MongoDB Atlas.**
 
@@ -46,6 +40,30 @@ Future Atlas Search features to implement can include:
 <h3>Prerequisites</h3>
 
 - A MongoDB Atlas account. Get one for free <a href="https://www.mongodb.com/cloud/atlas">here.</a>
-- A recent version of Node.js and npm
-- mongoshop sample dataset
+- A recent version of Node.js and npm.
+- Amazon product sample dataset
 - (Recommended) <a href="https://www.mongodb.com/try/download/compass">MongoDB Compass - GUI</a>
+
+<h3>Instructions</h3>
+
+In the project directory, you can run:
+
+#### `npm install`
+
+#### `npm start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
+
+<br/>
+<div align="center">
+<img src="SearchArchitecture.png" width="450"  />
+</div>
+<br/>
+
+If you have any questions or feedback about this repo, feel free to create an Issue or PR in this repo or reach out to me on Twitter @YouOldMaid.
+
+Also please join our online <a href="https://developer.mongodb.com/community/forums/">MongoDB Community</a> to interact with our product and engineering teams along with thousands of other MongoDB and Realm users. <br/><br/>Have fun and happy coding!
