@@ -21,27 +21,6 @@ const Home = () => {
   const [showSponsored, setShowSponsored] = useState(false);
   const [showFilters, setShowFilters] = useState(true);
 
-  // const getProductsEndpointDev =
-  //   "https://us-east-1.aws.data.mongodb-api.com/app/searchstore-zhtzd/endpoint/dev";
-
-  // const getProductsDev = async () => {
-  //   let productsReturned = await (
-  //     await fetch(`${getProductsEndpointDev}?searchTerm=${searchTerm}`)
-  //   ).json();
-  //   console.log(productsReturned);
-  //   setProducts(productsReturned);
-  //   if (productsReturned.length !== 0) setShowResults(true);
-  // };
-
-  // useEffect(() => {
-  //   if (searchTerm !== "" && searchTerm.length > 2) {
-  //     getProductsDev();
-  //     console.log("GETTING PRODUCTS");
-  //   }
-
-  //   // eslint-disable-next-line
-  // }, [searchTerm]);
-
   const getProductsEndpoint =
     "https://us-east-1.aws.data.mongodb-api.com/app/searchstore-zhtzd/endpoint/products";
 
@@ -121,27 +100,3 @@ const Home = () => {
 export default Home;
 
 const markets = ["Amazon", "PrimeNow", "AmazonDistribution"];
-
-// let productsReturned = await (
-//   await fetch(
-//     `https://us-east-1.aws.data.mongodb-api.com/app/searchstore-zhtzd/endpoint/products?searchTerm=${searchTerm}&page=${currentPage}`
-//   )
-// ).json();
-// console.log(productsReturned);
-// console.log(
-//   `https://us-east-1.aws.data.mongodb-api.com/app/searchstore-zhtzd/endpoint/products?searchTerm=${searchTerm}&page=${currentPage}`
-// );
-
-// console.log("MAXPAGES: ", Object.values(productsReturned.maxPages)[0]);
-// setMaxPages(Object.values(productsReturned.maxPages)[0]);
-// setProducts(productsReturned.products);
-//  const getCategories = async () => {
-//    console.log("GETTING CATEGORIES");
-//    const categoriesReturned = await (
-//      await fetch(
-//        `https://us-east-1.aws.data.mongodb-api.com/app/searchstore-zhtzd/endpoint/categories`
-//      )
-//    ).json();
-//    // console.log("CATEGORIES: ", categoriesReturned); // SEE DO I GET AN ARRAY OF STRINGS BEFORE SETTING
-//    setCategories(categoriesReturned);
-//  };
