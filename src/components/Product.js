@@ -6,13 +6,10 @@ import { ShoppingCartIcon } from "@heroicons/react/outline";
 const Product = ({ product }) => {
   const [showDescription, setShowDescription] = useState(false);
   let description = [];
-  let score = 0;
+  let score = product.score.toFixed(3);
+  console.log("SCORE IS: ", score);
   if (product.main_description) {
     description = product.main_description;
-  }
-  if (product.score) {
-    score = Object.values(product.score)[0];
-    score = score.toString().slice(0, 5);
   }
 
   let price = Object.values(product.price.value)[0];
@@ -48,7 +45,7 @@ const Product = ({ product }) => {
         highlights={product.highlights}
         description={description}
         image={product.main_image_url}
-        price={price}
+        price={product.price}
         category={product.category}
         setShowDescription={setShowDescription}
       />
