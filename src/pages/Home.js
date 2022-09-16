@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
 import Pagination from "../components/Pagination";
+import ProductModal from "../components/ProductModal";
 import Products from "../components/Products";
 import Radio from "../components/Radio";
 import CheckBox from "../components/Checkbox";
@@ -20,6 +21,8 @@ const Home = () => {
   const [showResults, setShowResults] = useState(false);
   const [showSponsored, setShowSponsored] = useState(false);
   const [showFilters, setShowFilters] = useState(true);
+  const [showProductModal, setShowProductModal] = useState(false);
+  const [productIndex, setProductIndex] = useState(-100);
 
   const getProductsEndpoint =
     "https://us-east-1.aws.data.mongodb-api.com/app/searchstore-zhtzd/endpoint/products";
@@ -76,13 +79,26 @@ const Home = () => {
               </div>
             )}
             {showResults ? (
-              <Products products={products} />
+              <Products
+                products={products}
+                productIndex={productIndex}
+                setProductIndex={setProductIndex}
+                showProductModal={showProductModal}
+                setShowProductModal={setShowProductModal}
+              />
             ) : (
               <div className="mt-20 py-2 text-center text-black w-full text-6xl rounded-lg">
                 Shopping Results
               </div>
             )}
           </div>
+          {showProductModal && (
+            <ProductModal
+              setShowProductModal={setShowProductModal}
+              products={products}
+              productIndex={productIndex}
+            />
+          )}
           {/* <Pagination
             maxPages={maxPages}
             setCurrentPage={setCurrentPage}

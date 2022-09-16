@@ -1,61 +1,44 @@
 import React, { useState } from "react";
-import ProductDescription from "./ProductDescription";
+// import ProductDescription from "./ProductDescription";
 
 import { ShoppingCartIcon } from "@heroicons/react/outline";
 
-const Product = ({ product }) => {
-  const [showDescription, setShowDescription] = useState(false);
+const Product = ({
+  product,
+  index,
+  setProductIndex,
+  showProductModal,
+  setShowProductModal,
+}) => {
   let description = [];
   let score = product.score.toFixed(3);
-  console.log("SCORE IS: ", score);
   if (product.main_description) {
     description = product.main_description;
   }
 
-  let price = Object.values(product.price.value)[0];
+  // let price = Object.values(product.price.value)[0];
 
-  let ProdDescriptionComponent = (
-    <div className="fixed inset-0 z-20 flex justify-center bg-smoke-dark">
-      <div className="relative flex flex-col w-2/3 bg-white border border-black rounded h-1/6 mt-60 p-8">
-        <div className="p-4 mb-4 text-4xl font-bold text-center text-tolopea-500 font-body">
-          No description available.
-        </div>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          onClick={() => {
-            setShowDescription(false);
-          }}
-          className="absolute w-10 h-10 mt-10 text-red-700 bottom-8 right-10"
-          viewBox="0 0 20 20"
-          fill="currentColor"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
-            clip-rule="evenodd"
-          />
-        </svg>
-      </div>
-    </div>
-  );
-  if (description.length > 0) {
-    ProdDescriptionComponent = (
-      <ProductDescription
-        title={product.name}
-        highlights={product.highlights}
-        description={description}
-        image={product.main_image_url}
-        price={product.price}
-        category={product.category}
-        setShowDescription={setShowDescription}
-      />
-    );
-  }
+  //   ProdDescriptionComponent = (
+  //     <ProductDescription
+  //       title={product.name}
+  //       highlights={product.highlights}
+  //       description={description}
+  //       image={product.main_image_url}
+  //       price={product.price}
+  //       category={product.category}
+  //       setShowDescription={setShowDescription}
+  //     />
+  //   );
+  // }
 
   return (
     <div href={`/products/${product._id}`}>
       <div
-        onClick={() => setShowDescription(!showDescription)}
+        onClick={() => {
+          setShowProductModal(!showProductModal);
+          setProductIndex(index);
+          console.log("PRODUCT INDEX: ", index);
+        }}
         className="w-full max-w-sm mx-auto rounded-md shadow-md cursor-pointer hover:shadow-2xl transition relative"
       >
         <div className="flex items-end justify-end h-56 w-full bg-cover ">
@@ -82,9 +65,9 @@ const Product = ({ product }) => {
               CATEGORY: {product.category}
             </h3>
           )}
-          <span className="text-gray-500 mt-2">${price}</span>
+          <span className="text-gray-500 mt-2">price</span>
           <h3 className="text-red-500 mt-2">{product.marketplace}</h3>
-          {showDescription && ProdDescriptionComponent}
+          {/* {showDescription && ProdDescriptionComponent} */}
         </div>
       </div>
     </div>
