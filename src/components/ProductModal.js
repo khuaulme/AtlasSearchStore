@@ -13,7 +13,7 @@ const ProductModal = ({ setShowProductModal, products, productIndex }) => {
         <div>{products[productIndex].name}</div>
 
         <ShoppingCartIcon
-          className="h-12 w-12 p-1 absolute bottom-0 left-0 ml-3 mb-3 text-white bg-black rounded-full"
+          className="h-12 w-12 p-1 absolute bottom-0 left-0 ml-3 mb-3 text-white bg-green-600 hover:bg-green-500 rounded-full"
           onClick={() => "setIsCartOpen(!isCartOpen)"}
         />
         <div
