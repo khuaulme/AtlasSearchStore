@@ -25,7 +25,8 @@ const Home = () => {
   const [productIndex, setProductIndex] = useState(-100);
 
   const getProductsEndpoint =
-    "https://us-east-1.aws.data.mongodb-api.com/app/searchstore-zhtzd/endpoint/products";
+    "https://us-east-1.aws.data.mongodb-api.com/app/mongostore-elxkl/endpoint/products";
+  //   "https://us-east-1.aws.data.mongodb-api.com/app/searchstore-zhtzd/endpoint/products";
 
   const getProducts = async () => {
     let data = {

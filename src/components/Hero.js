@@ -27,18 +27,14 @@ const Hero = ({
           </p>
           <div href={`/products`}>
             <button
-              onClick={() => setShowSponsored(!showSponsored)}
+              onClick={() => {
+                setShowSponsored(!showSponsored);
+                console.log("CLICK!");
+              }}
               className="flex items-center mt-4 px-3 py-2 bg-green-600 text-white text-xl uppercase font-medium rounded hover:bg-green-500 focus:outline-none focus:bg-green-500"
             >
               <span>✨ Shop Sale ✨</span>
             </button>
-
-            {/* <button
-              onClick={() => setShowFilters(!showFilters)}
-              className="absolute bottom-4 right-4 flex items-center mt-4 px-3 py-2 bg-slate-700 text-slate-200 text-xl uppercase font-medium rounded hover:bg-slate-600 focus:outline-none focus:bg-slate-600"
-            >
-              <span>Filters</span>
-            </button> */}
           </div>
         </div>
       </div>
